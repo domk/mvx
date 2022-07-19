@@ -128,14 +128,12 @@ fn process(args: &Args, operation: Operation) -> Result<(), Box<dyn Error>> {
             if let Some(ext_add) = &args.add {
                 target = format!("{}{}", target, ext_add);
             }
+        } else if let Some(ext_add) = &args.add {
+            target = format!("{}{}", source, ext_add);
         } else {
-            if let Some(ext_add) = &args.add {
-                target = format!("{}{}", source, ext_add);
-            } else {
-                return Err(Box::from(
-                    "One must provide either --remove or --add command",
-                ));
-            }
+            return Err(Box::from(
+                "One must provide either --remove or --add command",
+            ));
         }
 
         (operation)(args, source, &target)?;
@@ -157,7 +155,7 @@ fn operation(args: &Args) -> Operation {
 fn main() -> Result<(), Box<dyn Error>> {
     let args = Args::parse();
     if args.filenames.len() == 0 {
-        return Err(Box::from("At least one argument must be provided"));
+        return Err(Box::from("At least one filename  must be provided"));
     }
 
     check_files(&args)?;
