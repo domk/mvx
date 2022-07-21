@@ -1,5 +1,8 @@
 use clap::Parser;
+use std::env;
 use std::path::PathBuf;
+use std::path::Path;
+
 
 const SEMVER: &str = "0.2.0";
 
@@ -41,5 +44,13 @@ pub struct Args {
 }
 
 pub fn get_args() -> Args {
-    Args::parse()
+    let mut args = Args::parse();
+
+    if Path::new(&env::args().nth(0).unwrap())
+        .file_stem().unwrap().to_string_lossy() == "cpx"
+    {
+        args.copy = true;
+    }
+
+    args
 }

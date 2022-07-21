@@ -1,19 +1,11 @@
-use std::env;
 use mvx::utils::{check_files, get_man};
 use mvx::arguments::get_args;
 use mvx::command::{operation, process};
 use std::error::Error;
-use std::path::Path;
 
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let mut args = get_args();
-
-    if Path::new(&env::args().nth(0).unwrap())
-        .file_stem().unwrap().to_string_lossy() == "cpx"
-    {
-        args.copy = true;
-    }
+    let args = get_args();
 
     if args.man_page {
         println!("{}", get_man());
