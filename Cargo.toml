@@ -1,14 +1,19 @@
 [package]
 name = "mvx"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "mvx"
+path = "mvx/lib.rs"
 
 [dependencies]
 clap = { version = "3.*", features = ["derive"] }
 regex = "1"
 derive = "*"
+man = "0.3.0"
 
 [dev-dependencies]
 assert_cmd = "2.0.4"

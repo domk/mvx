@@ -3,7 +3,6 @@ use assert_fs::prelude::*;
 use predicates::prelude::*; // Used for writing assertions
 use std::process::Command; // Run programs
 
-
 #[test]
 fn extension_is_wrong() -> Result<(), Box<dyn std::error::Error>> {
     let temp = assert_fs::TempDir::new().unwrap();
