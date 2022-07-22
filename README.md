@@ -48,13 +48,13 @@ Copy the repository locally, then:
 
 ``` shell
 $ cargo build --release
-$ cp target/release/mvx /wherever/you/want
+$ cargo install --path . --root /wherever/you/want --no-track --force
 ```
 
 If  `cpx` is a link to `mvx` name, the program will perform as if the `--copy`  flag was provided:
 
 ```shell
-$ cp target/release/mvx /wherever/you/want/cpx
+$ ln -s /wherever/you/want/mvx /wherever/you/want/cpx
 $ ls
 light.md.bak
 $ /wherever/you/want/cpx light.md.bak -r .bak
